@@ -14,13 +14,25 @@ import axios from "axios";
 //   json: true
 // };
 
-var options2 = {
+var balanceOptions = {
   method: "POST",
   url: "http://10.101.1.116:8888/v1/chain/get_table_rows",
   data: {
-    scope: "project1",
-    code: "eosio.token",
-    table: "accounts",
+    scope: "project2",
+    code: "eossmartcity",
+    table: "project",
+    json: true
+  }
+};
+
+var citizenOptions = {
+  method: "POST",
+  url: "http://10.101.1.116:8888/v1/chain/get_table_rows",
+  data: {
+    scope: "eossmartcity",
+    code: "eossmartcity",
+    table: "citizen",
+    limit: "1000",
     json: true
   }
 };
@@ -29,14 +41,34 @@ class TableList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentBalance: "0"
+      currentBalance: "0",
+      citizens: []
     };
   }
 
   async componentWillMount() {
-    const response = await axios(options2);
-    console.log(response.data.rows[0].balance);
-    this.setState({ currentBalance: response.data.rows[0].balance });
+    const balanceRes = await axios(balanceOptions);
+    const citizenRes = await axios(citizenOptions);
+    let arrays = [];
+    if (citizenRes.data.rows.length > 0) {
+      for (let i = 0; i < citizenRes.data.rows.length; i++) {
+        arrays[i] = [
+          citizenRes.data.rows[i].account,
+          citizenRes.data.rows[i].citizen_name,
+          citizenRes.data.rows[i].projectsvoted,
+          citizenRes.data.rows[i].projectsverified,
+          citizenRes.data.rows[i].projectsimpactvalue,
+          citizenRes.data.rows[i].age,
+          citizenRes.data.rows[i].governmentid
+        ];
+      }
+
+      this.setState({
+        // currentBalance: balanceRes.data.rows[0].balance,
+        citizens: arrays
+      });
+      console.log(arrays);
+    }
   }
   render() {
     return (
@@ -152,6 +184,7 @@ class TableList extends Component {
               />
             }
           />
+          {/* {this.state.citizens} */}
         </ItemGrid>
         <ItemGrid xs={12} sm={12} md={12}>
           <RegularCard
@@ -160,20 +193,16 @@ class TableList extends Component {
             content={
               <Table
                 tableHeaderColor="primary"
-                tableHead={["Name", "Country", "City", "Funding"]}
-                tableData={[
-                  ["Dakota Rice", "Niger", "Oud-Turnhout", "$36,738"],
-                  ["Minerva Hooper", "Curaçao", "Sinaai-Waas", "$23,789"],
-                  ["Sage Rodriguez", "Netherlands", "Baileux", "$56,142"],
-                  ["Philip Chaney", "Korea, South", "Overland Park", "$38,735"],
-                  [
-                    "Doris Greene",
-                    "Malawi",
-                    "Feldkirchen in Kärnten",
-                    "$63,542"
-                  ],
-                  ["Mason Porter", "Chile", "Gloucester", "$78,615"]
+                tableHead={[
+                  "Account",
+                  "Name",
+                  "Project Voted",
+                  "Projects Verified",
+                  "Projects Impact Value",
+                  "Age",
+                  "Government ID"
                 ]}
+                tableData={this.state.citizens}
               />
             }
           />
@@ -186,19 +215,12 @@ class TableList extends Component {
             content={
               <Table
                 tableHeaderColor="danger"
-                tableHead={["Name", "Country", "City", "Cost"]}
+                tableHead={["Name", "Type", "Cost"]}
                 tableData={[
-                  ["Dakota Rice", "Niger", "Oud-Turnhout", "$36,738"],
-                  ["Minerva Hooper", "Curaçao", "Sinaai-Waas", "$23,789"],
-                  ["Sage Rodriguez", "Netherlands", "Baileux", "$56,142"],
-                  ["Philip Chaney", "Korea, South", "Overland Park", "$38,735"],
-                  [
-                    "Doris Greene",
-                    "Malawi",
-                    "Feldkirchen in Kärnten",
-                    "$63,542"
-                  ],
-                  ["Mason Porter", "Chile", "Gloucester", "$78,615"]
+                  ["Wind Turbines", "Hardware", "$36,738"],
+                  ["Power Supply", "Hardware", "$23,789"],
+                  ["Turbo Engines", "Hardware", "$56,142"],
+                  ["Maintenace", "Human", "$38,735"]
                 ]}
               />
             }

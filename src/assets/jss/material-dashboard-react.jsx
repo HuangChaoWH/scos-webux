@@ -99,7 +99,7 @@ const blueCardHeader = {
   ...infoBoxShadow
 };
 const purpleCardHeader = {
-  background: "linear-gradient(60deg, #ab47bc, #8e24aa)",
+  background: "linear-gradient(60deg, #2BABE2, #2BABE2)",
   ...primaryBoxShadow
 };
 

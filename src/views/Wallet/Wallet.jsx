@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, InputLabel } from "material-ui";
+import request from "request";
 
 import {
   ProfileCard,
@@ -10,6 +11,31 @@ import {
 } from "components";
 
 import avatar from "assets/img/faces/marc.jpg";
+
+// // var options = {
+// //   method: "POST",
+// //   url: "http://10.101.1.116:8888/v1/chain/get_account",
+// //   body: { account_name: "citizen3" },
+// //   json: true
+// // };
+
+// var options2 = {
+//   method: "POST",
+//   url: "http://10.101.1.116:8888/v1/chain/get_table_rows",
+//   body: {
+//     scope: "project1",
+//     code: "eosio.token",
+//     table: "accounts",
+//     json: true
+//   },
+//   json: true
+// };
+
+// request(options2, function(error, response, body) {
+//   if (error) throw new Error(error);
+
+//   console.log(body);
+// });
 
 function UserProfile({ ...props }) {
   return (

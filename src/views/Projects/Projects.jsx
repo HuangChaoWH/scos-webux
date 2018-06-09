@@ -56,9 +56,9 @@ class Projects extends Component {
         },
         {
           id: "000068e2845cf10b",
-          name: "Solar Homes",
+          name: "Smart Homes",
           description:
-            "Passive solar energy is the heating space that utilizes the design of the house or building so as trap solar heat when necessary.",
+            "A smart home, or smart house, is a home that incorporates advanced automation systems to provide the inhabitants with sophisticated monitoring.",
           image:
             "https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
         },

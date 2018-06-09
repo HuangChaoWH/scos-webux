@@ -1,8 +1,8 @@
 import DashboardPage from "views/Dashboard/Dashboard.jsx";
-import Wallet from "views/Wallet/Wallet.jsx";
-import TableList from "views/TableList/TableList.jsx";
+import Citizen from "views/Citizen/Citizen.jsx";
+import Project from "views/Project/Project.jsx";
 import Projects from "views/Projects/Projects.jsx";
-import Icons from "views/Icons/Icons.jsx";
+import Government from "views/Government/Government.jsx";
 import Maps from "views/Maps/Maps.jsx";
 import NotificationsPage from "views/Notifications/Notifications.jsx";
 
@@ -25,23 +25,23 @@ const dashboardRoutes = [
     component: Projects
   },
   {
-    path: "/user",
+    path: "/citizen",
     sidebarName: "Citizen",
-    navbarName: "Profile",
+    navbarName: "Citizen",
     icon: Person,
-    component: Wallet
+    component: Citizen
   },
   {
     path: "/government",
     sidebarName: "Government",
-    navbarName: "Profile",
+    navbarName: "Government",
     icon: Person,
-    component: Wallet
+    component: Government
   },
   {
     path: "/project/:id",
     icon: ContentPaste,
-    component: TableList
+    component: Project
   },
   { redirect: true, path: "/", to: "/dashboard", navbarName: "Redirect" }
 ];

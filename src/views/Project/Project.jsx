@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import request from "request";
 import avatar from "assets/img/faces/marc.jpg";
 import axios from "axios";
-
+import { ThumbUp, ThumbDown } from "@material-ui/icons";
 // var options = {
 //   method: "POST",
 //   url: "http://10.101.1.116:8888/v1/chain/get_account",
@@ -37,7 +37,7 @@ var citizenOptions = {
   }
 };
 
-class TableList extends Component {
+class Project extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -80,9 +80,14 @@ class TableList extends Component {
             title="Star Forward Pvt Ltd"
             description="Star Forward is a leader in power management solutions for customers in more than 175 countries worldwide. Star Forward has a strong heritage of innovation."
             footer={
-              <Button color="primary" round>
-                Follow
-              </Button>
+              <div>
+                <Button color="success" round>
+                  <ThumbUp /> &nbsp;Upvote
+                </Button>
+                <Button color="danger" round>
+                  <ThumbDown /> &nbsp;Downvote
+                </Button>
+              </div>
             }
           />
         </ItemGrid>
@@ -215,12 +220,12 @@ class TableList extends Component {
             content={
               <Table
                 tableHeaderColor="danger"
-                tableHead={["Name", "Type", "Cost"]}
+                tableHead={["Name", "Type", "Tokens"]}
                 tableData={[
-                  ["Wind Turbines", "Hardware", "$36,738"],
-                  ["Power Supply", "Hardware", "$23,789"],
-                  ["Turbo Engines", "Hardware", "$56,142"],
-                  ["Maintenace", "Human", "$38,735"]
+                  ["Wind Turbines", "Hardware", "10"],
+                  ["Power Supply", "Hardware", "5"],
+                  ["Turbo Engines", "Hardware", "30"],
+                  ["Maintenace", "Human", "6"]
                 ]}
               />
             }
@@ -231,4 +236,4 @@ class TableList extends Component {
   }
 }
 
-export default TableList;
+export default Project;

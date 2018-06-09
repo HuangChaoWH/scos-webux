@@ -41,6 +41,16 @@ function UserProfile({ ...props }) {
   return (
     <div>
       <Grid container>
+        {/* <ItemGrid xs={12} sm={6} md={4}>
+          <StatsCard
+            icon={InfoOutline}
+            iconColor="blue"
+            title="Total Balances"
+            description="54"
+            statIcon={LocalOffer}
+            statText="Transparency Tokens"
+          />
+        </ItemGrid> */}
         <ItemGrid xs={12} sm={12} md={8}>
           <RegularCard
             cardTitle="Edit Profile"

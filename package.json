@@ -8,6 +8,7 @@
     "@material-ui/core": "^1.2.0",
     "@material-ui/icons": "1.0.0-beta.42",
     "axios": "^0.18.0",
+    "binaryen": "^37.0.0",
     "chartist": "0.10.1",
     "classnames": "2.2.5",
     "eosjs": "^14.1.1",

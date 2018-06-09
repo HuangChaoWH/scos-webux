@@ -97,7 +97,7 @@ class Projects extends Component {
   getProjects(classes) {
     return this.state.projects.map(item => {
       return (
-        <Grid item>
+        <Grid item key={item.id}>
           <Card
             className={classes.card}
             onClick={() => this.handleSubmit(item.id)}

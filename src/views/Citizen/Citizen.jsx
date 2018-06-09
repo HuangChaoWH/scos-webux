@@ -34,7 +34,7 @@ var balanceOptions = {
   method: "POST",
   url: "http://10.101.1.116:8888/v1/chain/get_table_rows",
   data: {
-    scope: "c11111123",
+    scope: "c1111",
     code: "eossmartcity",
     table: "citizen",
     json: true
@@ -63,13 +63,13 @@ class Citizen extends Component {
         <Grid container>
           <ItemGrid xs={12} sm={12} md={4}>
             <RegularCard
-              cardTitle="Wallet Details"
+              cardTitle="Wallet Balance"
               headerColor="orange"
               cardSubtitle=""
               content={
                 <div>
                   <Typography gutterBottom variant="display1" component="h2">
-                    $10,000
+                    {this.state.currentBalance}
                   </Typography>
                   <Typography component="p">
                     Last Updated 10 Jun 2018

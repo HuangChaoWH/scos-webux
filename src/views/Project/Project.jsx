@@ -8,12 +8,15 @@ import avatar from "assets/img/faces/marc.jpg";
 import axios from "axios";
 import { ThumbUp, ThumbDown } from "@material-ui/icons";
 import names from "../../babyNames";
-// var options = {
-//   method: "POST",
-//   url: "http://10.101.1.116:8888/v1/chain/get_account",
-//   body: { account_name: "citizen3" },
-//   json: true
-// };
+import eosioKeys from "../../keyfile";
+import Eos from "eosjs";
+
+console.log(eosioKeys["c1111"]);
+
+const eos = Eos({
+  keyProvider: eosioKeys["c1111"],
+  httpEndpoint: "http://10.101.1.116:8888"
+});
 
 var balanceOptions = {
   method: "POST",
@@ -45,6 +48,8 @@ class Project extends Component {
       currentBalance: "0",
       citizens: []
     };
+
+    this.handleUpVote = this.handleUpVote.bind(this);
   }
 
   async componentWillMount() {
@@ -57,10 +62,10 @@ class Project extends Component {
           citizenRes.data.rows[i].account,
           // citizenRes.data.rows[i].citizen_name,
           names[i],
-          citizenRes.data.rows[i].projectsvoted,
-          citizenRes.data.rows[i].projectsverified,
-          citizenRes.data.rows[i].projectsimpactvalue,
-          citizenRes.data.rows[i].age,
+          citizenRes.data.rows[i].projectsvoted.toString(),
+          citizenRes.data.rows[i].projectsverified.toString(),
+          citizenRes.data.rows[i].projectsimpactvalue.toString(),
+          citizenRes.data.rows[i].age.toString(),
           citizenRes.data.rows[i].governmentid
         ];
       }
@@ -72,6 +77,16 @@ class Project extends Component {
       console.log(arrays);
     }
   }
+
+  handleUpVote() {
+    console.log("handleUpVote");
+    const options = { broadcast: true };
+    eos.transfer(
+      { from: "c1111", to: "project1", quantity: "1 HAK", memo: "Test" },
+      options
+    );
+  }
+
   render() {
     return (
       <Grid container>
@@ -83,7 +98,7 @@ class Project extends Component {
             description="Star Forward is a leader in power management solutions for customers in more than 175 countries worldwide. Star Forward has a strong heritage of innovation."
             footer={
               <div>
-                <Button color="success" round>
+                <Button color="success" round onClick={this.handleUpVote}>
                   <ThumbUp /> &nbsp;Upvote
                 </Button>
                 <Button color="danger" round>

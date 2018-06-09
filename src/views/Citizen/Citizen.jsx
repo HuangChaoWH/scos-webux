@@ -81,8 +81,8 @@ class Citizen extends Component {
           <ItemGrid xs={12} sm={12} md={4}>
             <ProfileCard
               avatar={avatar}
-              subtitle="American Citizen"
-              title="Alec Thompson"
+              subtitle="Indian Citizen"
+              title="Gautam Anand"
             />
           </ItemGrid>
           <ItemGrid xs={12} sm={12} md={4}>

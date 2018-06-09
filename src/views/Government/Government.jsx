@@ -1,58 +1,149 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles, Grid, Hidden } from "material-ui";
-
-import { RegularCard, P, A, ItemGrid } from "components";
+import Circle from "react-circle";
+import { RegularCard, P, A, ItemGrid, Table } from "components";
 
 import iconsStyle from "assets/jss/material-dashboard-react/iconsStyle";
-
+import Typography from "@material-ui/core/Typography";
 function Icons({ ...props }) {
   return (
     <Grid container>
       <ItemGrid xs={12} sm={12} md={12}>
         <RegularCard
           plainCard
-          cardTitle="Material Design Icons"
-          cardSubtitle={
-            <P>
-              Handcrafted by our friends from{" "}
-              <A
-                href="https://design.google.com/icons/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Google
-              </A>
-            </P>
+          cardTitle="Republic of India"
+          cardSubtitle={<P>Bhārat Gaṇarājya</P>}
+          content={<div />}
+        />
+      </ItemGrid>
+      <ItemGrid xs={12} sm={12} md={4}>
+        <RegularCard
+          cardTitle="Progress Speed"
+          cardSubtitle=""
+          content={
+            <Circle
+              progress={73}
+              animate={true} // Boolean: Animated/Static progress
+              responsive={true} // Boolean: Make SVG adapt to parent size
+              size={50} // Number: Defines the size of the circle.
+              lineWidth={20}
+              progressColor="#2BABE2"
+            />
           }
+        />
+      </ItemGrid>
+      <ItemGrid xs={12} sm={12} md={4}>
+        <RegularCard
+          cardTitle="Project Success"
+          headerColor="green"
+          cardSubtitle=""
+          content={
+            <Circle
+              progress={89}
+              animate={true} // Boolean: Animated/Static progress
+              responsive={true} // Boolean: Make SVG adapt to parent size
+              size={50} // Number: Defines the size of the circle.
+              lineWidth={20}
+              progressColor="red"
+            />
+          }
+        />
+      </ItemGrid>
+      <ItemGrid xs={12} sm={12} md={4}>
+        <RegularCard
+          cardTitle="Citizen Approval"
+          headerColor="blue"
+          cardSubtitle=""
+          content={
+            <Circle
+              progress={90}
+              animate={true} // Boolean: Animated/Static progress
+              responsive={true} // Boolean: Make SVG adapt to parent size
+              size={50} // Number: Defines the size of the circle.
+              lineWidth={20}
+              progressColor="green"
+            />
+          }
+        />
+      </ItemGrid>
+      <ItemGrid xs={12} sm={12} md={4}>
+        <RegularCard
+          cardTitle="Projects Viewed"
+          headerColor="blue"
+          cardSubtitle=""
           content={
             <div>
-              <Hidden only={["sm", "xs"]}>
-                <iframe
-                  className={props.classes.iframe}
-                  src="https://material.io/icons/"
-                  title="Icons iframe"
-                >
-                  <p>Your browser does not support iframes.</p>
-                </iframe>
-              </Hidden>
-              <Hidden only={["lg", "md"]}>
-                <ItemGrid xs={12} sm={12} md={6}>
-                  <h5>
-                    The icons are visible on Desktop mode inside an iframe.
-                    Since the iframe is not working on Mobile and Tablets please
-                    visit the icons on their original page on Google. Check the
-                    <a
-                      href="https://design.google.com/icons/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Material Icons
-                    </a>
-                  </h5>
-                </ItemGrid>
-              </Hidden>
+              <Typography gutterBottom variant="display1" component="h2">
+                3,4534,860
+              </Typography>
+              <Typography component="p">Last Updated 10 Jun 2018</Typography>
             </div>
+          }
+        />
+      </ItemGrid>
+      <ItemGrid xs={12} sm={12} md={4}>
+        <RegularCard
+          cardTitle="Projects Approved"
+          headerColor="green"
+          cardSubtitle=""
+          content={
+            <div>
+              <Typography gutterBottom variant="display1" component="h2">
+                34,860
+              </Typography>
+              <Typography component="p">Last Updated 10 Jun 2018</Typography>
+            </div>
+          }
+        />
+      </ItemGrid>
+      <ItemGrid xs={12} sm={12} md={4}>
+        <RegularCard
+          cardTitle="Projects Rejected"
+          headerColor="red"
+          cardSubtitle=""
+          content={
+            <div>
+              <Typography gutterBottom variant="display1" component="h2">
+                10,356
+              </Typography>
+              <Typography component="p">Last Updated 10 Jun 2018</Typography>
+            </div>
+          }
+        />
+      </ItemGrid>
+      <ItemGrid xs={12} sm={12} md={12}>
+        <RegularCard
+          cardTitle="Projects Approved"
+          headerColor="green"
+          cardSubtitle="Approved by government for public projects"
+          content={
+            <Table
+              tableHeaderColor="success"
+              tableHead={["Name", "Description", "Tokens"]}
+              tableData={[
+                [
+                  "Wind Turbines",
+                  "Wind power involves converting wind energy into electricity by using wind turbines. A wind turbine is composed of 3 propellers-like blades called a rotor.",
+                  "10"
+                ],
+                [
+                  "Drinking Water",
+                  "Potable water is water that is considered safe to drink. It has been either treated, cleaned or filtered and meets your local established drinking water standards.",
+                  "5"
+                ],
+                [
+                  "Education",
+                  "Education is the wise, hopeful and respectful cultivation of learning undertaken in the belief that all should have the chance to share in life.",
+                  "30"
+                ],
+                [
+                  "Smart House",
+                  "Passive solar energy is the heating space that utilizes the design of the house or building so as trap solar heat when necessary.",
+                  "6"
+                ]
+              ]}
+            />
           }
         />
       </ItemGrid>

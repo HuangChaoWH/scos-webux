@@ -7,6 +7,7 @@ import request from "request";
 import avatar from "assets/img/faces/marc.jpg";
 import axios from "axios";
 import { ThumbUp, ThumbDown } from "@material-ui/icons";
+import names from "../../babyNames";
 // var options = {
 //   method: "POST",
 //   url: "http://10.101.1.116:8888/v1/chain/get_account",
@@ -54,7 +55,8 @@ class Project extends Component {
       for (let i = 0; i < citizenRes.data.rows.length; i++) {
         arrays[i] = [
           citizenRes.data.rows[i].account,
-          citizenRes.data.rows[i].citizen_name,
+          // citizenRes.data.rows[i].citizen_name,
+          names[i],
           citizenRes.data.rows[i].projectsvoted,
           citizenRes.data.rows[i].projectsverified,
           citizenRes.data.rows[i].projectsimpactvalue,
@@ -189,7 +191,6 @@ class Project extends Component {
               />
             }
           />
-          {/* {this.state.citizens} */}
         </ItemGrid>
         <ItemGrid xs={12} sm={12} md={12}>
           <RegularCard

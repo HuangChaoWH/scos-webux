@@ -52,7 +52,7 @@ class Project extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentBalance: "0",
+      currentBalance: 150000000 - 1000,
       citizens: [],
       tl: false,
       tc: false,
@@ -60,7 +60,8 @@ class Project extends Component {
       bl: false,
       bc: false,
       br: false,
-      message: ""
+      message: "",
+      progress: 98
     };
 
     this.handleUpVote = this.handleUpVote.bind(this);
@@ -112,34 +113,37 @@ class Project extends Component {
     //   { from: "citizen2", to: "project1", quantity: "1 HAK", memo: "Test" },
     //   options
     // );
-    const resp = await eos.transaction({
-      actions: [
-        {
-          account: "eosio.token",
-          name: "transfer",
-          authorization: [
-            {
-              actor: "c1112",
-              permission: "active"
-            }
-          ],
-          data: {
-            from: "c1112",
-            to: "project2",
-            quantity: "1 HAK",
-            memo: "test"
-          }
-        }
-      ]
-    });
+    // const resp = await eos.transaction({
+    //   actions: [
+    //     {
+    //       account: "eosio.token",
+    //       name: "transfer",
+    //       authorization: [
+    //         {
+    //           actor: "c1112",
+    //           permission: "active"
+    //         }
+    //       ],
+    //       data: {
+    //         from: "c1112",
+    //         to: "project2",
+    //         quantity: "1 HAK",
+    //         memo: "test"
+    //       }
+    //     }
+    //   ]
+    // });
 
-    await this.setState({
-      message: `Project upvoted successfully with Transaction ID: ${
-        resp.transaction_id
-      }`
+    // await this.setState({
+    //   message: `Project upvoted successfully with Transaction ID: ${
+    //     resp.transaction_id
+    //   }`
+    // });
+    // console.log(resp);
+    this.setState({
+      currentBalance: this.state.currentBalance + 1000,
+      progress: 100
     });
-    console.log(resp);
-    this.setState({ currentBalance: 1000 });
     this.showNotification("tl");
   }
 
@@ -215,7 +219,10 @@ class Project extends Component {
             content={
               <div>
                 <Typography gutterBottom variant="display1" component="h1">
-                  $<CountUp start={0} end={this.state.currentBalance} />
+                  $<CountUp
+                    start={this.state.currentBalance - 1000}
+                    end={this.state.currentBalance}
+                  />
                 </Typography>
                 <Typography component="p">Funding in progress</Typography>
               </div>
@@ -262,7 +269,7 @@ class Project extends Component {
             cardSubtitle=""
             content={
               <Circle
-                progress={99}
+                progress={this.state.progress}
                 animate={true} // Boolean: Animated/Static progress
                 responsive={true} // Boolean: Make SVG adapt to parent size
                 size={50} // Number: Defines the size of the circle.

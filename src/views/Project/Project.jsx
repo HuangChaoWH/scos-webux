@@ -1,12 +1,19 @@
 import React, { Component } from "react";
 import { Grid } from "material-ui";
 import Circle from "react-circle";
-import { RegularCard, Table, ItemGrid, ProfileCard, Button } from "components";
+import {
+  RegularCard,
+  Table,
+  ItemGrid,
+  ProfileCard,
+  Button,
+  Snackbar
+} from "components";
 import Typography from "@material-ui/core/Typography";
 import request from "request";
 import avatar from "assets/img/faces/marc.jpg";
 import axios from "axios";
-import { ThumbUp, ThumbDown } from "@material-ui/icons";
+import { ThumbUp, ThumbDown, AddAlert } from "@material-ui/icons";
 import names from "../../babyNames";
 import eosioKeys from "../../keyfile";
 import Eos from "eosjs";
@@ -14,7 +21,7 @@ import Eos from "eosjs";
 console.log(eosioKeys["c1111"]);
 
 const eos = Eos({
-  keyProvider: eosioKeys["c1111"],
+  keyProvider: "5HrBWY4xwYRaU4WB5SY4Z447VzTRcTD1QsHbjapB6KdFfZYbbMd",
   httpEndpoint: "http://10.101.1.116:8888"
 });
 
@@ -46,7 +53,14 @@ class Project extends Component {
     super(props);
     this.state = {
       currentBalance: "0",
-      citizens: []
+      citizens: [],
+      tl: false,
+      tc: false,
+      tr: false,
+      bl: false,
+      bc: false,
+      br: false,
+      message: ""
     };
 
     this.handleUpVote = this.handleUpVote.bind(this);
@@ -78,18 +92,63 @@ class Project extends Component {
     }
   }
 
-  handleUpVote() {
+  showNotification(place) {
+    var x = [];
+    x[place] = true;
+    this.setState(x);
+    setTimeout(
+      function() {
+        x[place] = false;
+        this.setState(x);
+      }.bind(this),
+      6000
+    );
+  }
+
+  async handleUpVote() {
     console.log("handleUpVote");
     const options = { broadcast: true };
-    eos.transfer(
-      { from: "c1111", to: "project1", quantity: "1 HAK", memo: "Test" },
-      options
-    );
+    // eos.transfer(
+    //   { from: "citizen2", to: "project1", quantity: "1 HAK", memo: "Test" },
+    //   options
+    // );
+    const resp = await eos.transaction({
+      actions: [
+        {
+          account: "eosio.token",
+          name: "transfer",
+          authorization: [
+            {
+              actor: "c1111",
+              permission: "active"
+            }
+          ],
+          data: {
+            from: "c1111",
+            to: "project1",
+            quantity: "1 HAK",
+            memo: "test"
+          }
+        }
+      ]
+    });
+
+    await this.setState({ message: resp });
+    this.showNotification("tl");
   }
 
   render() {
     return (
       <Grid container>
+        <Snackbar
+          place="tl"
+          color="info"
+          icon={AddAlert}
+          message={this.state.message}
+          open={this.state.tl}
+          closeNotification={() => this.setState({ tl: false })}
+          close
+        />
         <ItemGrid xs={12} sm={12} md={12}>
           <ProfileCard
             avatar={avatar}

@@ -8,6 +8,7 @@ import {
   Typography
 } from "material-ui";
 import PropTypes from "prop-types";
+import CountUp from "react-countup";
 
 import statsCardStyle from "assets/jss/material-dashboard-react/statsCardStyle";
 
@@ -40,7 +41,7 @@ function StatsCard({ ...props }) {
           component="h2"
           className={classes.cardTitle}
         >
-          {description}{" "}
+          <CountUp start={0} end={description} />
           {small !== undefined ? (
             <small className={classes.cardTitleSmall}>{small}</small>
           ) : null}

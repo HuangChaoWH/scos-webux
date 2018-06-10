@@ -10,6 +10,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import request from "request";
+import CountUp from "react-countup";
 import {
   StatsCard,
   ChartCard,
@@ -133,8 +134,8 @@ class Projects extends Component {
             <StatsCard
               icon={Store}
               iconColor="green"
-              title="Toal Funded"
-              description="$34,456,245"
+              title="Total Funded"
+              description="34456245"
               statIcon={DateRange}
               statText="Last 24 Hours"
             />

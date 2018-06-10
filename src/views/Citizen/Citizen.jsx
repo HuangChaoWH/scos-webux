@@ -29,7 +29,7 @@ import {
 
 import avatar from "assets/img/faces/marcus.jpg";
 import axios from "axios";
-
+import CountUp from "react-countup";
 var balanceOptions = {
   method: "POST",
   url: "http://10.101.1.116:8888/v1/chain/get_table_rows",
@@ -69,7 +69,7 @@ class Citizen extends Component {
               content={
                 <div>
                   <Typography gutterBottom variant="display1" component="h2">
-                    {this.state.currentBalance}
+                    <CountUp start={0} end={this.state.currentBalance} />
                   </Typography>
                   <Typography component="p">
                     Last Updated 10 Jun 2018
@@ -87,13 +87,14 @@ class Citizen extends Component {
           </ItemGrid>
           <ItemGrid xs={12} sm={12} md={4}>
             <RegularCard
-              cardTitle="Projects Voted / Worth"
+              cardTitle="Projects Voted / Tokens"
               headerColor="purple"
               cardSubtitle=""
               content={
                 <div>
                   <Typography gutterBottom variant="display1" component="h1">
-                    54 / $100,000
+                    <CountUp start={0} end={54} /> /{" "}
+                    <CountUp start={0} end={100000} />
                   </Typography>
                   <Typography component="p">
                     Last Updated 10 Jun 2018

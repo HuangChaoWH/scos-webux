@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { withStyles, Grid, Hidden } from "material-ui";
 import Circle from "react-circle";
 import { RegularCard, P, A, ItemGrid, Table } from "components";
-
+import CountUp from "react-countup";
 import iconsStyle from "assets/jss/material-dashboard-react/iconsStyle";
 import Typography from "@material-ui/core/Typography";
 function Icons({ ...props }) {
@@ -15,6 +15,51 @@ function Icons({ ...props }) {
           cardTitle="Republic of India"
           cardSubtitle={<P>Bhārat Gaṇarājya</P>}
           content={<div />}
+        />
+      </ItemGrid>
+      <ItemGrid xs={12} sm={12} md={4}>
+        <RegularCard
+          cardTitle="Projects Viewed"
+          headerColor="blue"
+          cardSubtitle=""
+          content={
+            <div>
+              <Typography gutterBottom variant="display1" component="h2">
+                <CountUp start={0} end={34534860} />
+              </Typography>
+              <Typography component="p">Last Updated 10 Jun 2018</Typography>
+            </div>
+          }
+        />
+      </ItemGrid>
+      <ItemGrid xs={12} sm={12} md={4}>
+        <RegularCard
+          cardTitle="Projects Approved"
+          headerColor="green"
+          cardSubtitle=""
+          content={
+            <div>
+              <Typography gutterBottom variant="display1" component="h2">
+                <CountUp start={0} end={34860} />
+              </Typography>
+              <Typography component="p">Last Updated 10 Jun 2018</Typography>
+            </div>
+          }
+        />
+      </ItemGrid>
+      <ItemGrid xs={12} sm={12} md={4}>
+        <RegularCard
+          cardTitle="Projects Rejected"
+          headerColor="red"
+          cardSubtitle=""
+          content={
+            <div>
+              <Typography gutterBottom variant="display1" component="h2">
+                <CountUp start={0} end={10356} />
+              </Typography>
+              <Typography component="p">Last Updated 10 Jun 2018</Typography>
+            </div>
+          }
         />
       </ItemGrid>
       <ItemGrid xs={12} sm={12} md={4}>
@@ -64,51 +109,6 @@ function Icons({ ...props }) {
               lineWidth={20}
               progressColor="green"
             />
-          }
-        />
-      </ItemGrid>
-      <ItemGrid xs={12} sm={12} md={4}>
-        <RegularCard
-          cardTitle="Projects Viewed"
-          headerColor="blue"
-          cardSubtitle=""
-          content={
-            <div>
-              <Typography gutterBottom variant="display1" component="h2">
-                3,4534,860
-              </Typography>
-              <Typography component="p">Last Updated 10 Jun 2018</Typography>
-            </div>
-          }
-        />
-      </ItemGrid>
-      <ItemGrid xs={12} sm={12} md={4}>
-        <RegularCard
-          cardTitle="Projects Approved"
-          headerColor="green"
-          cardSubtitle=""
-          content={
-            <div>
-              <Typography gutterBottom variant="display1" component="h2">
-                34,860
-              </Typography>
-              <Typography component="p">Last Updated 10 Jun 2018</Typography>
-            </div>
-          }
-        />
-      </ItemGrid>
-      <ItemGrid xs={12} sm={12} md={4}>
-        <RegularCard
-          cardTitle="Projects Rejected"
-          headerColor="red"
-          cardSubtitle=""
-          content={
-            <div>
-              <Typography gutterBottom variant="display1" component="h2">
-                10,356
-              </Typography>
-              <Typography component="p">Last Updated 10 Jun 2018</Typography>
-            </div>
           }
         />
       </ItemGrid>

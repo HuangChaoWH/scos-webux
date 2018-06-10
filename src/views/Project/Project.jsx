@@ -17,11 +17,11 @@ import { ThumbUp, ThumbDown, AddAlert } from "@material-ui/icons";
 import names from "../../babyNames";
 import eosioKeys from "../../keyfile";
 import Eos from "eosjs";
-
-console.log(eosioKeys["c1111"]);
+import CountUp from "react-countup";
+console.log(eosioKeys["c1112"]);
 
 const eos = Eos({
-  keyProvider: "5HrBWY4xwYRaU4WB5SY4Z447VzTRcTD1QsHbjapB6KdFfZYbbMd",
+  keyProvider: eosioKeys["c1112"],
   httpEndpoint: "http://10.101.1.116:8888"
 });
 
@@ -119,13 +119,13 @@ class Project extends Component {
           name: "transfer",
           authorization: [
             {
-              actor: "c1111",
+              actor: "c1112",
               permission: "active"
             }
           ],
           data: {
-            from: "c1111",
-            to: "project1",
+            from: "c1112",
+            to: "project2",
             quantity: "1 HAK",
             memo: "test"
           }
@@ -194,7 +194,7 @@ class Project extends Component {
             content={
               <div>
                 <Typography gutterBottom variant="display1" component="h1">
-                  $150,000,000
+                  $<CountUp start={0} end={150000000} />
                 </Typography>
                 <Typography component="p">Funding in progress</Typography>
               </div>
@@ -209,7 +209,7 @@ class Project extends Component {
             content={
               <div>
                 <Typography gutterBottom variant="display1" component="h1">
-                  {this.state.currentBalance}
+                  <CountUp start={0} end={this.state.currentBalance} />
                 </Typography>
                 <Typography component="p">Funding in progress</Typography>
               </div>

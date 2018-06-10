@@ -113,33 +113,33 @@ class Project extends Component {
     //   { from: "citizen2", to: "project1", quantity: "1 HAK", memo: "Test" },
     //   options
     // );
-    // const resp = await eos.transaction({
-    //   actions: [
-    //     {
-    //       account: "eosio.token",
-    //       name: "transfer",
-    //       authorization: [
-    //         {
-    //           actor: "c1112",
-    //           permission: "active"
-    //         }
-    //       ],
-    //       data: {
-    //         from: "c1112",
-    //         to: "project2",
-    //         quantity: "1 HAK",
-    //         memo: "test"
-    //       }
-    //     }
-    //   ]
-    // });
+    const resp = await eos.transaction({
+      actions: [
+        {
+          account: "eosio.token",
+          name: "transfer",
+          authorization: [
+            {
+              actor: "c1112",
+              permission: "active"
+            }
+          ],
+          data: {
+            from: "c1112",
+            to: "project2",
+            quantity: "1 HAK",
+            memo: "test"
+          }
+        }
+      ]
+    });
 
-    // await this.setState({
-    //   message: `Project upvoted successfully with Transaction ID: ${
-    //     resp.transaction_id
-    //   }`
-    // });
-    // console.log(resp);
+    await this.setState({
+      message: `Project upvoted successfully with Transaction ID: ${
+        resp.transaction_id
+      }`
+    });
+    console.log(resp);
     this.setState({
       currentBalance: this.state.currentBalance + 1000,
       progress: 100

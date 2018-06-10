@@ -134,7 +134,7 @@ class Projects extends Component {
             <StatsCard
               icon={Store}
               iconColor="green"
-              title="Total Funded"
+              title="Total Funded ($)"
               description="34456245"
               statIcon={DateRange}
               statText="Last 24 Hours"
@@ -144,7 +144,7 @@ class Projects extends Component {
             <StatsCard
               icon={InfoOutline}
               iconColor="blue"
-              title="Total Balances"
+              title="Total Balances (Tokens)"
               description="54"
               statIcon={LocalOffer}
               statText="Transparency Tokens"

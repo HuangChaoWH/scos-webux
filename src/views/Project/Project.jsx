@@ -133,7 +133,13 @@ class Project extends Component {
       ]
     });
 
-    await this.setState({ message: resp });
+    await this.setState({
+      message: `Project upvoted successfully with Transaction ID: ${
+        resp.transaction_id
+      }`
+    });
+    console.log(resp);
+    this.setState({ currentBalance: 1000 });
     this.showNotification("tl");
   }
 
@@ -142,7 +148,7 @@ class Project extends Component {
       <Grid container>
         <Snackbar
           place="tl"
-          color="info"
+          color="success"
           icon={AddAlert}
           message={this.state.message}
           open={this.state.tl}
@@ -209,7 +215,7 @@ class Project extends Component {
             content={
               <div>
                 <Typography gutterBottom variant="display1" component="h1">
-                  <CountUp start={0} end={this.state.currentBalance} />
+                  $<CountUp start={0} end={this.state.currentBalance} />
                 </Typography>
                 <Typography component="p">Funding in progress</Typography>
               </div>

@@ -52,7 +52,7 @@ class Project extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentBalance: 150000000 - 1000,
+      currentBalance: 150000000 - 1,
       citizens: [],
       tl: false,
       tc: false,
@@ -141,7 +141,7 @@ class Project extends Component {
     });
     console.log(resp);
     this.setState({
-      currentBalance: this.state.currentBalance + 1000,
+      currentBalance: this.state.currentBalance + 1,
       progress: 100
     });
     this.showNotification("tl");
@@ -220,7 +220,7 @@ class Project extends Component {
               <div>
                 <Typography gutterBottom variant="display1" component="h1">
                   HAK<CountUp
-                    start={this.state.currentBalance - 1000}
+                    start={this.state.currentBalance - 10}
                     end={this.state.currentBalance}
                   />
                 </Typography>

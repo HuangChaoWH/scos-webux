@@ -34,9 +34,9 @@ var balanceOptions = {
   method: "POST",
   url: "http://10.101.1.116:8888/v1/chain/get_table_rows",
   data: {
-    scope: "c1111",
-    code: "eossmartcity",
-    table: "citizen",
+    scope: "c1112",
+    code: "eosio.token",
+    table: "accounts",
     json: true
   }
 };
@@ -50,7 +50,6 @@ class Citizen extends Component {
   }
   async componentWillMount() {
     const balanceRes = await axios(balanceOptions);
-    console.log(balanceRes);
     if (balanceRes.data.rows.length > 0) {
       this.setState({
         currentBalance: balanceRes.data.rows[0].balance
@@ -69,7 +68,7 @@ class Citizen extends Component {
               content={
                 <div>
                   <Typography gutterBottom variant="display1" component="h2">
-                    <CountUp start={0} end={this.state.currentBalance} />
+                    <CountUp start={0} end={this.state.currentBalance.split(" ")[0]} /> HAK
                   </Typography>
                   <Typography component="p">
                     Last Updated 10 Jun 2018

@@ -134,7 +134,7 @@ class Projects extends Component {
             <StatsCard
               icon={Store}
               iconColor="green"
-              title="Total Funded ($)"
+              title="Total Funded (HAK)"
               description="34456245"
               statIcon={DateRange}
               statText="Last 24 Hours"

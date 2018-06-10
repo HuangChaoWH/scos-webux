@@ -204,7 +204,7 @@ class Project extends Component {
             content={
               <div>
                 <Typography gutterBottom variant="display1" component="h1">
-                  $<CountUp start={0} end={150000000} />
+                  HAK<CountUp start={0} end={150000000} />
                 </Typography>
                 <Typography component="p">Funding in progress</Typography>
               </div>
@@ -219,7 +219,7 @@ class Project extends Component {
             content={
               <div>
                 <Typography gutterBottom variant="display1" component="h1">
-                  $<CountUp
+                  HAK<CountUp
                     start={this.state.currentBalance - 1000}
                     end={this.state.currentBalance}
                   />
